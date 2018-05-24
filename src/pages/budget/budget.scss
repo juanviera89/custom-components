@@ -1,0 +1,21 @@
+page-budget {
+    .list {
+        font-size: 0.9em;
+        margin-bottom: 4em;
+        //border: 1px solid #000;
+        .list-header{
+            font-size:1.4em !important;
+            font-weight: bold;
+            background-color: #c4c4c4;
+            margin-bottom: 0;
+        }
+
+        .item {
+            font-size: 1em;
+            text-align: center;
+        }
+        .item:nth-child(odd) {
+            background-color: #d1d1d1;
+        }
+    }
+}

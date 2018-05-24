@@ -1,0 +1,70 @@
+<!--
+  Generated template for the BudgetPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>budget</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-list>
+    <ion-list-header>
+      facturas
+    </ion-list-header>
+     <ion-item  >
+        <div item-start> N°</div>
+        Fecha
+        <div item-end> Monto</div>
+      </ion-item>
+    <button ion-item *ngFor="let fact of facturas" (click)="navCtrl.push('FacturaPage')">
+      <div item-start> {{fact.sn}}</div>
+      {{fact.date | date:'MM/d/yy, HH:mm'}}
+      <div item-end> {{fact.total}} CLP</div>
+    </button>
+
+  </ion-list>
+
+  <ion-list>
+      <ion-list-header>
+        Presupuestos
+      </ion-list-header>
+      <ion-item  >
+         <div item-start> Monto</div>
+         Fecha
+         <div item-end> Aprobado</div>
+       </ion-item>
+      <button ion-item *ngFor="let pres of presupuestos" (click)="navCtrl.push('PresupuestoPage')" >
+        <div item-start> {{pres.total}} CLP</div>
+        {{pres.date | date:'MM/d/yy, HH:mm'}}
+        <div item-end *ngIf="pres.approved" > <ion-icon name="checkmark-circle-outline"></ion-icon> </div>
+      </button>
+    </ion-list>
+
+    <ion-list>
+        <ion-list-header>
+          Solicitudes
+        </ion-list-header>
+        <ion-item  >
+           <div item-start> Equipo</div>
+           Fecha
+           <div item-end> Estado</div>
+         </ion-item>
+        <button ion-item *ngFor="let sols of solicitudes"  (click)="navCtrl.push('SolicitudPage')" >
+          <div item-start> {{sols.equipment}}</div>
+          {{sols.date | date:'MM/d/yy, HH:mm'}}
+          <div item-end *ngIf="sols.status==0"> Enviada</div>
+          <div item-end *ngIf="sols.status==1"> En proceso</div>
+          <div item-end *ngIf="sols.status==2"> Asignado</div>
+          <div item-end *ngIf="sols.status==3"> Terminada</div>
+
+        </button>
+      </ion-list>
+</ion-content>

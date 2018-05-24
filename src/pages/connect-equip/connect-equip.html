@@ -1,0 +1,32 @@
+<!--
+  Generated template for the ConnectEquipPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{equipo.name}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-list >
+    <ion-item *ngFor="let notif of equipo.notifications" >
+      {{notif.msg}}
+    </ion-item>
+  </ion-list>
+
+  <div *ngFor="let graph of equipo.data" style="padding: 2em;">
+
+      <gauge-graph [item]="graph.config" [(ngModel)]="graph.data" *ngIf="graph.graph=='gauge'" ></gauge-graph> 
+      <round-graph [item]="graph.config" [(ngModel)]="graph.data" *ngIf="graph.graph=='round'"></round-graph>  
+      <line-graph [item]="graph.config" [(ngModel)]="graph.data" *ngIf="graph.graph=='lines'"></line-graph>
+      <div style="font-size:1.5em; text-align:center; width: 100%;"> {{graph.name}} </div>
+
+  </div>
+</ion-content>

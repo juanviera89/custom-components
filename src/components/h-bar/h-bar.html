@@ -1,0 +1,86 @@
+<!-- Generated template for the HBarComponent component -->
+<div class="graph-container" *ngIf="_serie.show.graphType == 'stackbar'" >
+  <div class="row-container" *ngFor="let pair of _serie.values.values; let i = index"  
+  [ngStyle]="{'margin' : _serie.sizes.verticalBarMargin + ' 0',
+            'font-size' : _serie.sizes.fontSize
+            } ">
+    <div class="bar-label"
+          [ngStyle]="{'font-weight' : _serie.sizes.leftLabelWeight,
+          'width':  _serie.sizes.leftLabelWith+'%',
+          'color' : _serie.colors.leftLabel } "
+          *ngIf="_serie.show.leftLabel" >
+      {{ _serie.show.leftLabel ? _serie.values.leftLabels[i] : ''}}
+    </div>
+    <div class="bar-container" [ngStyle]="{'width': _serie.sizes.barWidth}">
+      <div class="bar-div" [ngStyle]="{
+      'background-color' : _serie.colors.bottomBar , 
+      'background-image' : 'url('+_serie.colors.bottomBarBGImg+')',
+      'height': _serie.sizes.barHeight,
+      'border-radius':_serie.sizes.barRadius,
+      'font-weight' : _serie.sizes.valuesWeight
+    }">
+
+        <div class="bottom-bar-label" 
+        [ngStyle]="{'width': getPercentageWidth(pair)[0]+'%' ,
+        'color' : _serie.colors.valueLabel
+         }">
+        {{_serie.show.valueLabel ? (_serie.show.valuePercentaje ? getPercentageWidth(pair)[0] + '%': pair[0] ) : '' }}
+        </div>
+        <div class="top-bar" 
+        *ngIf="_serie.show.topBar" 
+        [ngStyle]="{
+        'color' : _serie.colors.valueLabel,
+        'background-color' : _serie.colors.topBar , 
+        'background-image' : 'url('+_serie.colors.topBarBGImg+')',
+        'border-radius':_serie.sizes.barRadius
+         }">
+         {{_serie.show.valueLabel ? (_serie.show.valuePercentaje ? getPercentageWidth(pair)[1] + '%' : pair[1] ) : '' }}
+        </div>
+      </div>
+    </div>
+    <div class="bar-label"
+          [ngStyle]="{'font-weight' : _serie.sizes.rightLabelWeight,
+          'width':  _serie.sizes.rightLabelWith+'%' ,
+          'color' : _serie.colors.rightLabel} "
+          *ngIf="_serie.show.rightLabel">
+          {{ _serie.show.rightLabel ? _serie.values.rightLabels[i] : ''}}
+    </div>
+  </div>
+</div>
+
+<div class="variablebar-graph-container" *ngIf="_serie.show.graphType == 'variablebar'">
+    <div class="row-container" *ngFor="let pair of _serie.values.values; let i = index"  
+    [ngStyle]="{'margin' : _serie.sizes.verticalBarMargin + ' 0',
+              'font-size' : _serie.sizes.fontSize
+              } ">
+
+              <div class="left-label" 
+              [ngStyle]="{'font-weight' : _serie.sizes.leftLabelWeight,
+              'width':  _serie.sizes.leftLabelWith+'%',
+              'color' : _serie.colors.leftLabel } "
+              *ngIf="_serie.show.leftLabel" >
+                  {{ _serie.show.leftLabel ? _serie.values.leftLabels[i] : ''}}
+            
+              </div>
+              <div class="variable-bar" [ngStyle]="{'width': variableBarWidth(pair)+'%' ,
+                'background-color' : _serie.colors.bottomBar , 
+                'background-image' : 'url('+_serie.colors.bottomBarBGImg+')',
+                'height': _serie.sizes.barHeight,
+                'border-radius':_serie.sizes.barRadius,
+                'font-weight' : _serie.sizes.valuesWeight
+                  }">
+                  {{_serie.show.valueLabel ? (_serie.show.valuePercentaje ? getPercentageWidth(pair)[0]: pair[0] ) : '' }}
+                 
+              </div>
+              <div class="right-label"
+                [ngStyle]="{'font-weight' : _serie.sizes.rightLabelWeight,
+                'color' : _serie.colors.rightLabel,
+              'text-align' : _serie.show.rightLabelAlign} "
+                *ngIf="_serie.show.rightLabel">
+                  {{ _serie.show.rightLabel ? _serie.values.rightLabels[i] : ''}}
+            
+              </div>
+
+    </div>
+  
+</div>

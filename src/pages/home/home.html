@@ -1,0 +1,32 @@
+<!-- <ion-header>
+  <ion-navbar>
+    <ion-title>
+      Ionic Blank
+    </ion-title>
+  </ion-navbar>
+</ion-header> -->
+
+<ion-content padding>
+    <div class="home-div-login" *ngIf="!initView"  >
+        <ion-item class="div-toolbar-top">
+                <p class="login-title" >Iniciar sesión</p>
+        </ion-item>
+
+        <form id="form-div" (submit)="doLogin()">
+            <ion-item style="background: none;" class="input-div">
+                <ion-input  class="item-input" no-lines type="email" [(ngModel)]="user.usuario" name="usuario" placeholder="Usuario" required></ion-input>
+            </ion-item>
+            <ion-item style="background: none;" class="input-div">
+                <ion-input class="item-input no-lines" no-lines type="password" [(ngModel)]="user.password" name="password" placeholder="Contraseña" required></ion-input>
+            </ion-item>
+            <div padding>
+                <button ion-button full [disabled]="user.usuario.trim().length==0 || user.password.trim().length==0" class="btn-login" text-capitalize>Iniciar  sesión</button>
+            </div>
+
+             
+        </form>
+
+        <!-- <button ion-button clear  class="btn-forgot">¿OLVIDASTE LA CONTRASEÑA?</button> -->
+        
+    </div>
+</ion-content>

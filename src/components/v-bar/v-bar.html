@@ -1,0 +1,165 @@
+<!-- Generated template for the VBarComponent component -->
+<div class="container stackbarinner" [ngStyle]="{ 
+  'height' : _serie.sizes.contentHeight
+} " *ngIf="_serie.show.graphType == 'stackbarinner'">
+
+  <div class="item" [ngStyle]="{ 
+    'height' : _serie.sizes.contentHeight,
+    'margin': _serie.sizes.verticalBarMargin + ' ' + _serie.sizes.HorizontalBarMargin
+  } " *ngFor="let pair of _serie.values.values; let i = index" >
+    <div class="bcontainer" [ngStyle]="{ 
+      'height' : barHeight(pair).barHeight,
+      'background-color': _serie.colors.barBG,
+      'width' : _serie.sizes.barWidth,
+      'border-radius': _serie.sizes.barRadius
+    } ">
+    
+      <div class="bottom-background"
+      *ngIf="pair[0]!=0 || pair[1]!=0" 
+      [ngStyle]="{ 
+        'height' : barHeight(pair).bgHeight,
+        'background-color': _serie.colors.bottomBar,
+        'background-image' : 'url('+_serie.colors.bottomBarBGImg+')',
+        'font-weight' : _serie.sizes.valuesWeight,
+        'color' : _serie.colors.valueLabel,
+        'font-size': _serie.sizes.valueFontSize
+      } ">
+
+          <div class="top-value" [ngStyle]="{ 
+            'height' : barHeight(pair).top,
+            'background-color': _serie.colors.topBar,
+            'background-image' : 'url('+_serie.colors.topBarBGImg+')'
+          } " *ngIf="_serie.show.topBar && pair[1]!=0" >
+           {{ _serie.show.valueLabel ? (_serie.show.valuePercentaje ? percentageValues(pair)[1]+'%' :  pair[1]) : ''}}
+          </div>
+          <div class="bottom-value" [ngStyle]="{ 
+            'height' : barHeight(pair).bottom
+          } ">
+            {{ _serie.show.valueLabel ? (_serie.show.valuePercentaje ? percentageValues(pair)[0]+'%' :  pair[0]) : ''}}
+          </div>
+          
+      </div>
+    
+    </div>
+    
+      
+      <div class="label" *ngIf="_serie.show.label"  [ngStyle]="{ 
+        'margin' : _serie.sizes.labelVerticalBarMargin + ' auto',
+        'font-weight' : _serie.sizes.labelWeight,
+        'color' : _serie.colors.label,
+        'font-size': _serie.sizes.labelFontSize
+      } ">
+          {{_serie.values.Labels[i]}}
+      </div>
+  </div>
+</div>
+
+
+
+<div class="container stackbaroutter" [ngStyle]="{ 
+  'height' : _serie.sizes.contentHeight
+} " *ngIf="_serie.show.graphType == 'stackbaroutter'">
+
+  <div class="item" [ngStyle]="{ 
+    'height' : _serie.sizes.contentHeight,
+    'margin': _serie.sizes.verticalBarMargin + ' ' + _serie.sizes.HorizontalBarMargin
+  } " *ngFor="let pair of _serie.values.values; let i = index" >
+
+
+  <div class="info-container" [ngStyle]="{ 
+    'height' : barHeight(pair).barHeight}">
+
+    <div class="bcontainer" [ngStyle]="{ 
+      'background-color': _serie.colors.barBG,
+      'width' : _serie.sizes.barWidth,
+      'border-radius': _serie.sizes.barRadius,
+      'justify-content': _serie.show.align
+      } ">
+    
+      <div class="bottom-background"
+      *ngIf="pair[0]!=0 || pair[1]!=0" 
+      [ngStyle]="{ 
+        'height' : barHeight(pair).bgHeight,
+        'background-color': _serie.colors.bottomBar,
+        'background-image' : 'url('+_serie.colors.bottomBarBGImg+')',
+        'font-weight' : _serie.sizes.valuesWeight,
+        'color' : _serie.colors.valueLabel,
+        'font-size': _serie.sizes.valueFontSize
+      } ">
+
+          <div class="top-value" [ngStyle]="{ 
+            'height' : barHeight(pair).top,
+            'background-color': _serie.colors.topBar,
+            'background-image' : 'url('+_serie.colors.topBarBGImg+')'
+          } " *ngIf="_serie.show.topBar && pair[1]!=0 && !_serie.show.inverse" 
+          >
+           
+          </div>
+          <div class="bottom-value" [ngStyle]="{ 
+            'height' : barHeight(pair).bottom
+          } ">
+            
+          </div>
+          <div class="top-value" [ngStyle]="{ 
+            'height' : barHeight(pair).top,
+            'background-color': _serie.colors.topBar,
+            'background-image' : 'url('+_serie.colors.topBarBGImg+')'
+          } " *ngIf="_serie.show.topBar && pair[1]!=0 && _serie.show.inverse" >
+           
+          </div>
+          
+      </div>
+    
+    </div>
+    <div class="lcontainer" [ngStyle]="{ 
+      'margin-left': _serie.sizes.outrerLabelLeftMargin,
+      'width' : _serie.sizes.barWidth,
+      'border-radius': _serie.sizes.barRadius,
+      'justify-content': _serie.show.align
+      } ">
+    
+      <div class="bottom-background"
+      *ngIf="pair[0]!=0 || pair[1]!=0" 
+      [ngStyle]="{ 
+        'height' : barHeight(pair).bgHeight,
+        'font-weight' : _serie.sizes.valuesWeight,
+        'font-size': _serie.sizes.valueFontSize
+      } ">
+
+          <div class="top-value" [ngStyle]="{ 
+            'height' : barHeight(pair).top,
+            'color': _serie.colors.topBar
+          } " *ngIf="_serie.show.topBar && pair[1]!=0 && !_serie.show.inverse" >
+           {{ _serie.show.valueLabel ? (_serie.show.valuePercentaje ? percentageValues(pair)[1]+'%' :  pair[1]) : ''}}
+          </div>
+          <div class="bottom-value" [ngStyle]="{ 
+            'height' : barHeight(pair).bottom,
+            'color' : _serie.colors.bottomBar
+          } ">
+            {{ _serie.show.valueLabel ? (_serie.show.valuePercentaje ? percentageValues(pair)[0]+'%' :  pair[0]) : ''}}
+          </div>
+          <div class="top-value" [ngStyle]="{ 
+            'height' : barHeight(pair).top,
+            'color': _serie.colors.topBar
+          } " *ngIf="_serie.show.topBar && pair[1]!=0 && _serie.show.inverse" >
+           {{ _serie.show.valueLabel ? (_serie.show.valuePercentaje ? percentageValues(pair)[1]+'%' :  pair[1]) : ''}}
+          </div>
+          
+      </div>
+    
+    </div>
+  </div>
+
+    
+    
+      
+      <div class="label" *ngIf="_serie.show.label"  [ngStyle]="{ 
+        'margin' : _serie.sizes.labelVerticalBarMargin + ' auto',
+        'font-weight' : _serie.sizes.labelWeight,
+        'color' : _serie.colors.label,
+        'font-size': _serie.sizes.labelFontSize
+      } ">
+          {{_serie.values.Labels[i]}}
+      </div>
+  </div>
+</div>

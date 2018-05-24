@@ -1,0 +1,96 @@
+h-bar {
+    .graph-container{
+        display: table;
+        width: 100%;
+        text-align:center;
+         vertical-align: middle;
+        
+      }
+      
+      .row-container{
+        display: table;
+        width: 100%;
+        
+        margin-bottom: 0.2em;
+        margin-top: 0.2em;
+      }
+      .bar-label{
+        display: table-cell;
+        height: 100%;
+        
+      }
+      .bar-container{
+        display: table-cell;
+        height: 100%;
+        
+      }
+      
+      .bar-div{
+        display: table;
+        background-color: blue;
+        color: white;
+        font-weight: bold;
+        height: 2.5em;
+        border-radius: 1.25em;
+        text-align:center;
+        width: 100%;
+        
+         vertical-align: middle;
+      }
+      .bottom-bar-label{
+        display: table-cell;
+        width: 75%;
+        height: 100%;
+         vertical-align: middle;
+        background-size: cover;
+        background-repeat: repeat;
+        background-position: center;
+        
+      }
+      .top-bar{
+        display: table-cell;
+        height: 100%;
+        background-color: red;
+        border-radius: 1.25em;
+         vertical-align: middle;
+         background-size: cover;
+         background-repeat: repeat;
+         background-position: center;
+        
+      }
+
+      .variablebar-graph-container{
+        width: 100%;
+
+        .row-container{
+            width: 100%;
+            display: table;
+            text-align:center;
+             vertical-align: middle;
+
+            .left-label{
+                display: table-cell;
+                width: 15%;
+                height: 100%;
+
+            }
+            .variable-bar{
+                display: table-cell;
+                background-color: blue;
+                color: white;
+                font-weight: bold;
+                height: 2.5em;
+                border-radius: 1.25em;
+
+            }
+            .right-label{
+                display: table-cell;
+                height: 15%;
+                height: 100%;
+                text-align: left;
+
+            }
+        }
+      }
+
+}
